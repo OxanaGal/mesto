@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Проект адаптивная вёрстка на Яндекс.Практикуме">
+  <meta name="author" content="Оксана">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body class="page">
+  <section class="form _hidden">
+    <div class="form__edit-profile">
+      <button class="form__btn form__btn_action_close shaded" type="button"></button>
+      <form class="form__admin">
+        <h2 class="form__heading">Редактировать профиль</h2>
+        <fieldset class="form__input-container">
+          <label for="title" class="form__label"></label>
+          <input type="text" class="form__item" id="title" name="title" placeholder="Жак-Ив Кусто" required>
+          <label for="profile-info" class="form__label"></label>
+          <input type="text" class="form__item" id="profile-info" name="profile-info" placeholder="Исследователь океана" required>
+        </fieldset>
+        <fieldset class="form__handlers">
+          <button class="form__btn form__btn_action_save" type="button">Сохранить</button>
+          <!-- Логично добавить пoтом в форму кнопку сброса, если введённые данные неверны-->
+        </fieldset>
+      </form>
+    </div>
+  </section>
+  <header class="header">
+    <div class="header__logo"></div>
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__columns">
+        <div class="profile__avatar">
+          <img class="profile__image" src="./images/avatar.png" alt="Аватар профиля">
+        </div>
+        <div class="profile__info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__btn profile__btn_action_edit shaded"></button>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__btn profile__btn_action_add shaded"></button>
+    </section>
+    <section class="cards">
+      <ul class="cards__list">
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+        <li class="card">
+
+          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="">
+          <div class="card__description">
+            <h2 class="card__title">название</h2>
+            <button class="card__btn card__btn_action_like shaded"></button>
+          </div>
+
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022. Оксана Галямова</p>
+  </footer>
+
+  <script></script>
+</body>
+
+</html>
