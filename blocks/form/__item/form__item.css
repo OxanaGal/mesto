@@ -11,6 +11,10 @@
   padding: 17px 0;
 }
 
+.form__item:focus{
+  outline-style: none;
+}
+
 .form__item::placeholder {
   font-size: 14px;
   font-family: 'Inter', Arial, sans-serif;
@@ -37,4 +41,11 @@
   font-family: 'Inter', Arial, sans-serif;
   line-height: 16.94px;
   color: #000000;
+}
+
+@media screen and (max-width: 565px){
+  .form__item{
+    padding: 13px 0;
+    margin-top: 30px;
+  }
 }

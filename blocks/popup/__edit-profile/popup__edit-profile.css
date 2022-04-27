@@ -1,4 +1,4 @@
-.form__edit-profile {
+.popup__edit-profile {
   width: 430px;
   background-color: #ffffff;
   margin: auto;
@@ -8,13 +8,13 @@
 }
 
 @media screen and (max-width: 980px){
-  .form__edit-profile{
+  .popup__edit-profile{
     max-width: 560px;
   }
 }
 
 @media screen and (max-width: 565px){
-  .form__edit-profile{
+  .popup__edit-profile{
     max-width: 282px;
   }
 }

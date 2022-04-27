@@ -5,10 +5,10 @@
 @import url(../blocks/shaded/shaded.css);
 @import url(../blocks/hidden/hidden.css);
 
-@import url(../blocks/form/form.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__edit-profile/popup__edit-profile.css);
 
-@import url(../blocks/form/__edit-profile/form__edit-profile.css);
-@import url(../blocks/form/__admin/form__admin.css);
+@import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__input-container/form__input-container.css);
 @import url(../blocks/form/__item/form__item.css);
