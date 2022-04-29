@@ -3,10 +3,11 @@
 
 @import url(../blocks/page/page.css);
 @import url(../blocks/shaded/shaded.css);
-@import url(../blocks/hidden/hidden.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__edit-profile/popup__edit-profile.css);
+
+@import url(../blocks/opened/opened.css);
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);

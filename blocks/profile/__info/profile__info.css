@@ -9,12 +9,12 @@
 
 @media screen and (max-width: 980px){
   .profile__info{
-    grid-template-columns: auto 18px;
+   grid-template-columns: minmax(200px, 250px) 18px;
     margin-left: 15px;
   }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 630px){
   .profile__info{
     grid-template-columns: 200px 18px;
     gap: 14px 10px;

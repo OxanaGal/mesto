@@ -4,37 +4,16 @@
   background-repeat: no-repeat;
   min-width: 142px;
   min-height: 33px;
+  margin-bottom: 40px;
 }
 
-.header__logo::after{
-    content: "";
-    display: flex;
-    background-color: #545454;
-    height: 1px;
-    width: 880px;
-    text-align: center;
-    margin: 80px auto 0;
-    opacity: 0.7;
-}
-
-@media screen and (max-width: 980px){
-  .header__logo::after{
-    width: 560px;
-  }
-}
-
-@media screen and (max-width: 565px){
+@media screen and (max-width: 630px){
   .header__logo{
     background-size: 104px 24px;
     min-width: 104px;
     min-height: 24px;
     margin-left: 27px;
-  }
-
-  .header__logo::after{
-    width: 325px;
-    margin-top: 55px;
-    margin-left: -27px;
+    margin-bottom: 30px;
   }
 }
 
