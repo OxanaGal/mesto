@@ -12,15 +12,17 @@
 </head>
 
 <body class="page">
-  <section class="popup">
-    <div class="popup__edit-profile">
+  <section class="popup popup_view_profile-form">
+    <div class="popup__container">
       <form class="form" name="profile-edit-form" method="post" action="#">
         <h2 class="form__heading">Редактировать профиль</h2>
         <fieldset class="form__input-container">
           <label for="title" class="form__label"></label>
-          <input type="text" class="form__item form__text-name" id="title" name="title" placeholder="Жак-Ив Кусто" required>
+          <input type="text" class="form__item form__text-name" id="title" name="title" placeholder="Жак-Ив Кусто"
+            required>
           <label for="profile-info" class="form__label"></label>
-          <input type="text" class="form__item form__text-info" id="profile-info" name="profile-info" placeholder="Исследователь океана" required>
+          <input type="text" class="form__item form__text-info" id="profile-info" name="profile-info"
+            placeholder="Исследователь океана" required>
         </fieldset>
         <div class="form__handlers">
           <button class="form__btn form__btn_action_save" type="submit">Сохранить</button>
@@ -28,6 +30,32 @@
         </div>
       </form>
     </div>
+  </section>
+  <section class="popup popup_view_card-form">
+    <div class="popup__container">
+      <form class="form" name="card-edit-form" method="post" action="#">
+        <h2 class="form__heading">Новое место</h2>
+        <fieldset class="form__input-container">
+          <label for="card-title" class="form__label"></label>
+          <input type="text" class="form__item form__card-title" id="card-title" name="cardTitle" placeholder="Название"
+            required>
+          <label for="image-link" class="form__label"></label>
+          <input type="text" class="form__item form__image-link" id="image-link" name="imageLink"
+            placeholder="Ссылка на картинку" required>
+        </fieldset>
+        <div class="form__handlers">
+          <button class="form__btn form__btn_action_save" type="submit">Создать</button>
+          <button class="form__btn form__btn_action_close shaded" type="button"></button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section class="popup popup_view_image">
+    <button class="form__btn form__btn_action_close shaded" type="button"></button>
+    <figure>
+      <img src="#" alt="Изображение">
+      <figcaption></figcaption>
+    </figure>
   </section>
   <header class="header">
     <div class="header__logo"></div>
@@ -48,68 +76,26 @@
     </section>
     <section class="cards">
       <ul class="cards__list">
-        <li class="card">
 
-          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Изображение01">
-          <div class="card__description">
-            <h2 class="card__title">Название ррррррррррррррр</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
-        <li class="card">
-
-          <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Изображение02">
-          <div class="card__description">
-            <h2 class="card__title">название</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
-        <li class="card">
-
-          <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Изображение03">
-          <div class="card__description">
-            <h2 class="card__title">название</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
-        <li class="card">
-
-          <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Изображение04">
-          <div class="card__description">
-            <h2 class="card__title">название</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
-        <li class="card">
-
-          <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Изображение05">
-          <div class="card__description">
-            <h2 class="card__title">название</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
-        <li class="card">
-
-          <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Изображение06">
-          <div class="card__description">
-            <h2 class="card__title">название</h2>
-            <button class="card__btn card__btn_action_like shaded"></button>
-          </div>
-
-        </li>
       </ul>
     </section>
+    <template id="card-template">
+      <li class="card">
+
+        <img class="card__image" src="#" alt="description">
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__btn card__btn_action_like shaded"></button>
+        </div>
+        <button class="card__btn card__btn_action_delete shaded"></button>
+      </li>
+    </template>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022. Оксана Галямова</p>
   </footer>
 
-  <script src="./scripts/popup.js"></script>
+  <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>
