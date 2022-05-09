@@ -18,6 +18,11 @@
 @import url(../blocks/form/__btn/_action/form__btn_action_save.css);
 @import url(../blocks/form/__btn/_action/form__btn_action_close.css);
 
+@import url(../blocks/preview/preview.css);
+@import url(../blocks/preview/__area/preview__area.css);
+@import url(../blocks/preview/__image/preview__image.css);
+@import url(../blocks/preview/__description/preview__description.css);
+
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
@@ -47,6 +52,7 @@
 @import url(../blocks/card/__btn/card__btn.css);
 @import url(../blocks/card/__btn/_action/card__btn_action_like.css);
 @import url(../blocks/card/__btn/_action/card__btn_action_delete.css);
+@import url(../blocks/card/__btn/_action/card__btn_action_liked.css);
 
 
 @import url(../blocks/footer/footer.css);

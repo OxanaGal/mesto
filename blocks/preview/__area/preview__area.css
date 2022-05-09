@@ -1,0 +1,4 @@
+.preview__area{
+  display: flex;
+  flex-direction: column;
+}
