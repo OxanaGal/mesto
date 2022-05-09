@@ -1,32 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const popUp = document.querySelector('.popup');
-
 /* Форма профиля */
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const nameInput = popupEditProfile.querySelector('.form__text-name');
@@ -53,8 +24,8 @@ const cardList = cardContainer.querySelector('.cards__list');
 /* Кнопки */
 const popupOpenBtn = document.querySelector('.profile__btn_action_edit');
 const popupAddCard = document.querySelector('.profile__btn_action_add');
-const editProfileCloseBtn = popupEditProfile.querySelector('.popup__btn_action_close');
-const addCardCloseBtn = cardForm.querySelector('.popup__btn_action_close');
+const profileFormCloseBtn = popupEditProfile.querySelector('.popup__btn_action_close');
+const cardFormCloseBtn = cardForm.querySelector('.popup__btn_action_close');
 const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
@@ -69,13 +40,14 @@ function closePopup(currentModal) {
 /* Редактирование профиля*/
 
 function openEditProfileForm() {
-  openPopup(popupEditProfile);
 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
+
+  openPopup(popupEditProfile);
 }
 
-function formSubmitHandler(event) {
+function submitFormHandler(event) {
   event.preventDefault();
 
   profileTitle.textContent = nameInput.value;
@@ -138,9 +110,9 @@ function addNewCard(event) {
 popupOpenBtn.addEventListener('click', openEditProfileForm);
 popupAddCard.addEventListener('click', () => openPopup(cardForm));
 
-editProfileCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
-addCardCloseBtn.addEventListener('click', () => closePopup(cardForm));
+profileFormCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
+cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
 previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
 
-popupEditProfile.addEventListener('submit', formSubmitHandler);
+popupEditProfile.addEventListener('submit', submitFormHandler);
 cardForm.addEventListener('submit', addNewCard);

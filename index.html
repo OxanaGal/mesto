@@ -12,53 +12,6 @@
 </head>
 
 <body class="page">
-  <div class="popup popup_view_profile-form">
-    <div class="popup__container">
-      <form class="form" name="profile-edit-form" method="post" action="#">
-        <h2 class="form__heading">Редактировать профиль</h2>
-        <fieldset class="form__input-container">
-          <label for="title" class="form__label"></label>
-          <input type="text" class="form__item form__text-name" id="title" name="title" placeholder="Жак-Ив Кусто"
-            required>
-          <label for="profile-info" class="form__label"></label>
-          <input type="text" class="form__item form__text-info" id="profile-info" name="profile-info"
-            placeholder="Исследователь океана" required>
-        </fieldset>
-        <div class="form__handlers">
-          <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
-          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="popup popup_view_card-form">
-    <div class="popup__container">
-      <form class="form" name="card-edit-form" method="post" action="#">
-        <h2 class="form__heading">Новое место</h2>
-        <fieldset class="form__input-container">
-          <label for="card-title" class="form__label"></label>
-          <input type="text" class="form__item form__item_shaded form__card-title" id="card-title" name="cardTitle" placeholder="Название"
-            required>
-          <label for="image-link" class="form__label"></label>
-          <input type="text" class="form__item form__item_shaded form__card-link" id="image-link" name="imageLink"
-            placeholder="Ссылка на картинку" required>
-        </fieldset>
-        <div class="form__handlers">
-          <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
-          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="popup popup_view_image">
-    <div class="preview">
-    <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
-    <figure class="preview__area">
-      <img class="preview__image" src="#" alt="Изображение">
-      <figcaption class="preview__description"></figcaption>
-    </figure>
-  </div>
-</div>
   <header class="header">
     <div class="header__logo"></div>
   </header>
@@ -85,6 +38,53 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022. Оксана Галямова</p>
   </footer>
+  <div class="popup popup_view_profile-form">
+    <div class="popup__container">
+      <form class="form" name="profile-edit-form" method="post" action="#">
+        <h2 class="form__heading">Редактировать профиль</h2>
+        <fieldset class="form__input-container">
+          <label for="title" class="form__label"></label>
+          <input type="text" class="form__item form__text-name" id="title" name="title" placeholder="Жак-Ив Кусто"
+            required>
+          <label for="profile-info" class="form__label"></label>
+          <input type="text" class="form__item form__text-info" id="profile-info" name="profile-info"
+            placeholder="Исследователь океана" required>
+        </fieldset>
+        <div class="form__handlers">
+          <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_view_card-form">
+    <div class="popup__container">
+      <form class="form" name="card-edit-form" method="post" action="#">
+        <h2 class="form__heading">Новое место</h2>
+        <fieldset class="form__input-container">
+          <label for="card-title" class="form__label"></label>
+          <input type="text" class="form__item form__item_shaded form__card-title" id="card-title" name="cardTitle"
+            placeholder="Название" required>
+          <label for="image-link" class="form__label"></label>
+          <input type="text" class="form__item form__item_shaded form__card-link" id="image-link" name="imageLink"
+            placeholder="Ссылка на картинку" required>
+        </fieldset>
+        <div class="form__handlers">
+          <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
+          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_view_image">
+    <div class="preview">
+      <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
+      <figure class="preview__area">
+        <img class="preview__image" src="#" alt="Изображение">
+        <figcaption class="preview__description"></figcaption>
+      </figure>
+    </div>
+  </div>
   <template id="card-template">
     <li class="card">
 
@@ -96,6 +96,7 @@
       <button class="card__btn card__btn_action_delete shaded"></button>
     </li>
   </template>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/scripts.js"></script>
 </body>
 
