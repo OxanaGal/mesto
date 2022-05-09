@@ -29,7 +29,7 @@ const popUp = document.querySelector('.popup');
 
 /* Кнопки */
 const popupOpenBtn = document.querySelector('.profile__btn_action_edit');
-const popupCloseBtn = document.querySelector('.form__btn_action_close');
+const popupCloseBtn = popUp.querySelector('.form__btn_action_close');
 const popupAddCard = document.querySelector('.profile__btn_action_add');
 
 /* Форма профиля */
@@ -49,8 +49,8 @@ const linkInput = cardForm.querySelector('.form__image-link');
 const cardLink = document.querySelector();*/
 
 /*Просмотр карточек */
-const cardImage = document.querySelector('.card__image');
-const cardTitle = document.querySelector('.card__title');
+const imagePreview = document.querySelector('.preview__image');
+const titlePreview = document.querySelector('.preview__description');
 const previewModal = document.querySelector('.popup_view_image');
 
 /* Контент страницы */
@@ -102,7 +102,13 @@ function addCard(titleValue, linkValue) {
     event.target.closest('.card').remove();
   });
 
-  cardElement.querySelector('.card__image').addEventListener('click', () => openPopup(previewModal));
+  cardElement.querySelector('.card__image').addEventListener('click', () => {
+    openPopup(previewModal)
+
+    imagePreview.src = cardElement.querySelector('.card__image').src;
+    imagePreview.alt = cardElement.querySelector('.card__image');
+    titlePreview.textContent = cardElement.querySelector('.card__title').textContent;
+  });
 
   return cardElement;
 }
