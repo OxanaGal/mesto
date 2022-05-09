@@ -133,11 +133,6 @@ function addNewCard(event) {
 popupOpenBtn.addEventListener('click', openEditProfileForm);
 popupAddCard.addEventListener('click', () => openPopup(cardForm));
 
-cardImage.addEventListener('click', (event) => {
-  openPopup(previewModal);
-
-});
-
 popupCloseBtn.addEventListener('click', (event) => {
   const currentPopup = event.target.closest('.popup');
   currentPopup.classList.remove('opened');
