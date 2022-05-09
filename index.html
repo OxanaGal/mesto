@@ -25,8 +25,8 @@
             placeholder="Исследователь океана" required>
         </fieldset>
         <div class="form__handlers">
-          <button class="form__btn form__btn_action_save" type="submit">Сохранить</button>
-          <button class="form__btn form__btn_action_close shaded" type="button"></button>
+          <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
+          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
         </div>
       </form>
     </div>
@@ -37,22 +37,22 @@
         <h2 class="form__heading">Новое место</h2>
         <fieldset class="form__input-container">
           <label for="card-title" class="form__label"></label>
-          <input type="text" class="form__item form__card-title" id="card-title" name="cardTitle" placeholder="Название"
+          <input type="text" class="form__item form__item_shaded form__card-title" id="card-title" name="cardTitle" placeholder="Название"
             required>
           <label for="image-link" class="form__label"></label>
-          <input type="text" class="form__item form__image-link" id="image-link" name="imageLink"
+          <input type="text" class="form__item form__item_shaded form__card-link" id="image-link" name="imageLink"
             placeholder="Ссылка на картинку" required>
         </fieldset>
         <div class="form__handlers">
-          <button class="form__btn form__btn_action_save" type="submit">Создать</button>
-          <button class="form__btn form__btn_action_close shaded" type="button"></button>
+          <button class="popup__btn popup__btn_action_save" type="submit">Создать</button>
+          <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
         </div>
       </form>
     </div>
   </div>
   <div class="popup popup_view_image">
     <div class="preview">
-    <button class="form__btn form__btn_action_close shaded" type="button"></button>
+    <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
     <figure class="preview__area">
       <img class="preview__image" src="#" alt="Изображение">
       <figcaption class="preview__description"></figcaption>
