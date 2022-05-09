@@ -12,7 +12,7 @@
 }
 
 .form__item:focus{
-  outline-style: none;
+  outline: none;
 }
 
 .form__item::placeholder {
