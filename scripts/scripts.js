@@ -1,3 +1,5 @@
+const popUp = document.querySelector('.popup');
+
 /* Форма профиля */
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const nameInput = popupEditProfile.querySelector('.form__text-name');
@@ -29,17 +31,13 @@ const cardFormCloseBtn = cardForm.querySelector('.popup__btn_action_close');
 const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
-function openPopup(currentModal) {
-  currentModal.classList.add('opened');
-}
+const openPopup = (currentModal) => { currentModal.classList.add('opened'); }
 
-function closePopup(currentModal) {
-  currentModal.classList.remove('opened');
-}
+const closePopup = (currentModal) => { currentModal.classList.remove('opened'); }
 
 /* Редактирование профиля*/
 
-function openEditProfileForm() {
+const openEditProfileForm = () => {
 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
@@ -47,7 +45,7 @@ function openEditProfileForm() {
   openPopup(popupEditProfile);
 }
 
-function submitFormHandler(event) {
+const submitFormHandler = (event) => {
   event.preventDefault();
 
   profileTitle.textContent = nameInput.value;
@@ -58,7 +56,7 @@ function submitFormHandler(event) {
 
 /* Добавление карточек */
 
-function addCard(titleValue, linkValue) {
+const addCard = (titleValue, linkValue) => {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
@@ -68,13 +66,13 @@ function addCard(titleValue, linkValue) {
   cardImage.alt = titleValue;
   cardImage.src = linkValue;
 
-  cardElement.querySelector('.card__btn_action_like').addEventListener('click', (event) =>{
+  /*cardElement.querySelector('.card__btn_action_like').addEventListener('click', (event) => {
     event.target.classList.toggle('card__btn_action_liked');
-  });
+  });*/
 
-  cardElement.querySelector('.card__btn_action_delete').addEventListener('click', (event) => {
-    event.target.closest('.card').remove();
-  });
+  /* cardElement.querySelector('.card__btn_action_delete').addEventListener('click', (event) => {
+     event.target.closest('.card').remove();
+   });*/
 
   cardImage.addEventListener('click', () => {
     openPopup(previewModal)
@@ -87,15 +85,13 @@ function addCard(titleValue, linkValue) {
   return cardElement;
 }
 
-function renderNewCard(cardList, titleValue, linkValue) {
-  cardList.prepend(addCard(titleValue, linkValue));
-}
+const renderNewCard = (cardList, titleValue, linkValue) => { cardList.prepend(addCard(titleValue, linkValue)); }
 
-initialCards.forEach((initialCards) => {
-  renderNewCard(cardList, initialCards.name, initialCards.link)
+initialCards.forEach((element) => {
+  renderNewCard(cardList, element.name, element.link)
 });
 
-function addNewCard(event) {
+const addNewCard = (event) => {
   event.preventDefault();
 
   renderNewCard(cardList, titleInput.value, linkInput.value);
@@ -105,14 +101,32 @@ function addNewCard(event) {
   event.target.reset();
 }
 
+/*Функционал карточек*/
+const likeCard = (event) => {
+  if (event.target.classList.contains('card__btn_action_like')) {
+    event.target.classList.toggle('card__btn_action_liked');
+  }
+}
+
+const deleteCard = (event) => {
+  if (event.target.classList.contains('card__btn_action_delete')) {
+    event.target.closest('.card').remove();
+  }
+}
+
 
 /* Обработка событий */
 popupOpenBtn.addEventListener('click', openEditProfileForm);
 popupAddCard.addEventListener('click', () => openPopup(cardForm));
 
+
+
 profileFormCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
 cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
 previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
+
+cardList.addEventListener('click', likeCard);
+cardList.addEventListener('click', deleteCard);
 
 popupEditProfile.addEventListener('submit', submitFormHandler);
 cardForm.addEventListener('submit', addNewCard);
