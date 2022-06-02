@@ -43,10 +43,10 @@ const toggleButtonState = (inputList, buttonElement, disabledSelector) => {
 
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(disabledSelector);
-    buttonElement.disabledSelector = true;
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(disabledSelector);
-    buttonElement.disabledSelector = false;
+    buttonElement.disabled = false;
   }
 };
 
@@ -57,14 +57,14 @@ const setEventListeners = (formElement, validConfig) => {
   const inputList = Array.from(formElement.querySelectorAll(`.${inputSelector}`));
   const buttonElement = formElement.querySelector(`.${submitButtonSelector}`);
 
-  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
-
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
+    inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
       toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
+
+  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
 };
 
 /*Запуск валидации*/

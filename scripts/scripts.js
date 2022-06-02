@@ -26,14 +26,46 @@ const cardList = cardContainer.querySelector('.cards__list');
 /* Кнопки */
 const popupOpenBtn = document.querySelector('.profile__btn_action_edit');
 const popupAddCard = document.querySelector('.profile__btn_action_add');
+const popupSaveBtn = cardForm.querySelector('.popup__btn_action_save');
 const profileFormCloseBtn = popupEditProfile.querySelector('.popup__btn_action_close');
 const cardFormCloseBtn = cardForm.querySelector('.popup__btn_action_close');
 const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
-const openPopup = (currentModal) => { currentModal.classList.add('opened'); }
+const disableSaveBtn = () => {
+  popupSaveBtn.classList.add('popup__btn_disabled');
+  popupSaveBtn.setAttribute("disabled", "disabled");
+}
 
-const closePopup = (currentModal) => { currentModal.classList.remove('opened'); }
+const openPopup = (currentModal) => {
+  currentModal.classList.add('opened');
+
+  if(currentModal.classList.contains('opened')){
+    currentModal.addEventListener('click', closeByOverlayClick);
+  }
+
+  document.addEventListener('keydown', (event) => closebyEsc(event, currentModal));
+}
+
+const closePopup = (currentModal) => {
+
+  currentModal.classList.remove('opened');
+
+  popUp.removeEventListener('click', closeByOverlayClick);
+  document.removeEventListener('keydown', closebyEsc);
+}
+
+const closebyEsc = (event, currentModal) => {
+  if(event.key === 'Escape'){
+    closePopup(currentModal);
+  }
+};
+
+const closeByOverlayClick = (event) => {
+  if (event.target === event.currentTarget){
+    closePopup(event.currentTarget);
+  }
+}
 
 /* Редактирование профиля*/
 
@@ -94,6 +126,8 @@ initialCards.forEach((element) => {
 const addNewCard = (event) => {
   event.preventDefault();
 
+  disableSaveBtn();
+
   renderNewCard(cardList, titleInput.value, linkInput.value);
 
   closePopup(cardForm);
@@ -118,8 +152,6 @@ const deleteCard = (event) => {
 /* Обработка событий */
 popupOpenBtn.addEventListener('click', openEditProfileForm);
 popupAddCard.addEventListener('click', () => openPopup(cardForm));
-
-
 
 profileFormCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
 cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
