@@ -5,9 +5,10 @@
   color: red;
   opacity: 0;
   position: absolute;
-  top: calc(100% + 10px);
+  top: 32px;
   left: 0;
-  padding: 0;
+
+  width: 358px;
 
   transition: 0.3s;
 }

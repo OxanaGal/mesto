@@ -12,7 +12,7 @@
 @import url(../blocks/popup/__btn/_action/popup__btn_action_close.css);
 @import url(../blocks/popup/__btn/_disabled/popup__btn_disabled.css);
 
-@import url(../blocks/opened/opened.css);
+@import url(../blocks/popup/__opened/popup__opened.css);
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);

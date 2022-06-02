@@ -53,7 +53,7 @@ const toggleButtonState = (inputList, buttonElement, disabledSelector) => {
 /*Вешаем слушатели*/
 
 const setEventListeners = (formElement, validConfig) => {
-  const {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass} = validConfig;
+  const { inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass } = validConfig;
   const inputList = Array.from(formElement.querySelectorAll(`.${inputSelector}`));
   const buttonElement = formElement.querySelector(`.${submitButtonSelector}`);
 
@@ -70,7 +70,7 @@ const setEventListeners = (formElement, validConfig) => {
 /*Запуск валидации*/
 
 const enableValidation = (validationConfig) => {
-  const {formSelector} = validationConfig;
+  const { formSelector } = validationConfig;
 
   const formList = Array.from(document.querySelectorAll(`.${formSelector}`));
 

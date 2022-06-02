@@ -1,5 +1,3 @@
-const popUp = document.querySelector('.popup');
-
 /* Форма профиля */
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const nameInput = popupEditProfile.querySelector('.form__text-name');
@@ -33,36 +31,39 @@ const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
 const disableSaveBtn = () => {
+  /* тут ещё подумаю как поправить...*/
   popupSaveBtn.classList.add('popup__btn_disabled');
   popupSaveBtn.setAttribute("disabled", "disabled");
 }
 
 const openPopup = (currentModal) => {
-  currentModal.classList.add('opened');
+  currentModal.classList.add('popup__opened');
 
-  if(currentModal.classList.contains('opened')){
-    currentModal.addEventListener('click', closeByOverlayClick);
-  }
+  currentModal.addEventListener('click', closeByOverlayClick);
 
-  document.addEventListener('keydown', (event) => closebyEsc(event, currentModal));
+  document.addEventListener('keydown', closebyEsc);
 }
 
 const closePopup = (currentModal) => {
 
-  currentModal.classList.remove('opened');
+  currentModal.classList.remove('popup__opened');
 
-  popUp.removeEventListener('click', closeByOverlayClick);
+  currentModal.removeEventListener('click', closeByOverlayClick);
   document.removeEventListener('keydown', closebyEsc);
+  currentModal.reset();
 }
 
-const closebyEsc = (event, currentModal) => {
-  if(event.key === 'Escape'){
-    closePopup(currentModal);
+const closebyEsc = (event) => {
+  if (event.key === 'Escape') {
+
+    const modal = document.querySelector('.popup__opened');
+
+    closePopup(modal);
   }
 };
 
 const closeByOverlayClick = (event) => {
-  if (event.target === event.currentTarget){
+  if (event.target === event.currentTarget) {
     closePopup(event.currentTarget);
   }
 }
@@ -77,7 +78,7 @@ const openEditProfileForm = () => {
   openPopup(popupEditProfile);
 }
 
-const submitFormHandler = (event) => {
+const submitProfileFormHandler = (event) => {
   event.preventDefault();
 
   profileTitle.textContent = nameInput.value;
@@ -126,6 +127,7 @@ initialCards.forEach((element) => {
 const addNewCard = (event) => {
   event.preventDefault();
 
+
   disableSaveBtn();
 
   renderNewCard(cardList, titleInput.value, linkInput.value);
@@ -160,5 +162,5 @@ previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
 cardList.addEventListener('click', likeCard);
 cardList.addEventListener('click', deleteCard);
 
-popupEditProfile.addEventListener('submit', submitFormHandler);
+popupEditProfile.addEventListener('submit', submitProfileFormHandler);
 cardForm.addEventListener('submit', addNewCard);
