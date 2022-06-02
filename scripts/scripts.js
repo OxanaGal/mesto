@@ -50,7 +50,6 @@ const closePopup = (currentModal) => {
 
   currentModal.removeEventListener('click', closeByOverlayClick);
   document.removeEventListener('keydown', closebyEsc);
-  currentModal.reset();
 }
 
 const closebyEsc = (event) => {
