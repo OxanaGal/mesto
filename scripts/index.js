@@ -1,3 +1,7 @@
+import { initialCards, validationConfig } from '../utils/constants.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 /* Форма профиля */
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const nameInput = popupEditProfile.querySelector('.form__text-name');
@@ -86,38 +90,17 @@ const submitProfileFormHandler = (event) => {
   closePopup(popupEditProfile);
 }
 
-/* Добавление карточек + вынесен в card */
+/* Добавление карточек */
 
-const addCard = (titleValue, linkValue) => {
-  const cardTemplate = document.querySelector('#card-template').content;
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.card__image');
-  const cardTitle = cardElement.querySelector('.card__title');
+const createCard = ({ name, link }) => {
+  const cardItem = new Card({ name, link }, '#card-template');
+  return cardItem.generateCard();
+};
 
-  cardTitle.textContent = titleValue;
-  cardImage.alt = titleValue;
-  cardImage.src = linkValue;
-
-  /*cardElement.querySelector('.card__btn_action_like').addEventListener('click', (event) => {
-    event.target.classList.toggle('card__btn_action_liked');
-  });*/
-
-  /* cardElement.querySelector('.card__btn_action_delete').addEventListener('click', (event) => {
-     event.target.closest('.card').remove();
-   });*/
-
-  cardImage.addEventListener('click', () => {
-    openPopup(previewModal)
-
-    imagePreview.src = cardImage.src;
-    imagePreview.alt = cardTitle.textContent;
-    titlePreview.textContent = cardTitle.textContent;
-  });
-
-  return cardElement;
+const renderNewCard = (cardList, titleValue, linkValue) => {
+  const data = { titleValue, linkValue }
+  cardList.prepend(createCard(data));
 }
-
-const renderNewCard = (cardList, titleValue, linkValue) => { cardList.prepend(addCard(titleValue, linkValue)); }
 
 initialCards.forEach((element) => {
   renderNewCard(cardList, element.name, element.link)
@@ -136,33 +119,28 @@ const addNewCard = (event) => {
   event.target.reset();
 }
 
-/*Функционал карточек + вынесен в card */
-const likeCard = (event) => {
-  if (event.target.classList.contains('card__btn_action_like')) {
-    event.target.classList.toggle('card__btn_action_liked');
-  }
-}
+/* Валидация */
 
-const deleteCard = (event) => {
-  if (event.target.classList.contains('card__btn_action_delete')) {
-    event.target.closest('.card').remove();
-  }
-}
+const formValidators = {}
 
+Array.from(document.forms).forEach((formElement) => {
+  formValidators[formElement.name] = new FormValidator(validationConfig, formElement);
+  formValidators[formElement.name].enableValidation();
+});
 
-/* Обработка событий + вынесен в index */
-popupOpenBtn.addEventListener('click', openEditProfileForm);
+/* Обработка событий */
+popupOpenBtn.addEventListener('click', () => {
+  /* formValidators[popupEditProfile.name].cleanForm();*/
+  openEditProfileForm();
+});
 popupAddCard.addEventListener('click', () => {
-
+  /* formValidators[cardForm.name].cleanForm(); */
   openPopup(cardForm)
 });
 
 profileFormCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
 cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
 previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
-
-cardList.addEventListener('click', likeCard);
-cardList.addEventListener('click', deleteCard);
 
 popupEditProfile.addEventListener('submit', submitProfileFormHandler);
 cardForm.addEventListener('submit', addNewCard);
