@@ -92,18 +92,20 @@ const submitProfileFormHandler = (event) => {
 
 /* Добавление карточек */
 
-const createCard = ({ name, link }) => {
+function createCard({ name, link }) {
   const cardItem = new Card({ name, link }, '#card-template');
+  console.dir(cardItem);
+  console.log(cardItem);
   return cardItem.generateCard();
 };
 
-const renderNewCard = (cardList, titleValue, linkValue) => {
+function renderNewCard(titleValue, linkValue) {
   const data = { titleValue, linkValue }
   cardList.prepend(createCard(data));
 }
 
 initialCards.forEach((element) => {
-  renderNewCard(cardList, element.name, element.link)
+  renderNewCard(element.name, element.link)
 });
 
 const addNewCard = (event) => {
@@ -112,7 +114,7 @@ const addNewCard = (event) => {
 
   disableSaveBtn();
 
-  renderNewCard(cardList, titleInput.value, linkInput.value);
+  renderNewCard(titleInput.value, linkInput.value);
 
   closePopup(cardForm);
 
@@ -143,4 +145,4 @@ cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
 previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
 
 popupEditProfile.addEventListener('submit', submitProfileFormHandler);
-cardForm.addEventListener('submit', addNewCard);
+//cardForm.addEventListener('submit', addNewCard);

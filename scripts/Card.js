@@ -1,30 +1,40 @@
+//import { initialCards } from "../utils/constants.js";
 export default class Card {
-  constuctor({name, link}, templateSelector) {
+  constuctor({ name, link }, templateSelector) {
     this._cardLink = link;
     this._cardName = name;
 
     this._templateSelector = templateSelector;
   };
 
-  _getTemplate = () => {
+
+  _getTemplate() {
     console.log(this._templateSelector);
     const cardElement = document
-    .querySelector(this._templateSelector)
-    .content.
-    querySelector('.card').cloneNode(true);
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.card').cloneNode(true);
 
     return cardElement;
   };
 
-  generateCard = () => {
+  generateCard() {
     this._card = this._getTemplate();
 
-    this._card.querySelector('.card__title').textContent =  this._cardName;
+    console.log(this._card)
 
-    const cardImage = this._card.querySelector('.card__image');
+    //this._card.querySelector('.card__title').textContent = this._cardName;
 
-    cardImage.src = this._cardLink;
-    cardImage.alt = this._cardName;
+    //const cardImage = this._card.querySelector('.card__image');
+    this._cardTitle = this._card.querySelector('.card__title');
+    this._cardImage = this._card.querySelector('.card__image');
+
+    this._likeButton = this._card.querySelector('.card__btn_action_like');
+    this._deleteButton = this._card.querySelector('.card__btn_action_delete');
+
+    this._cardTitle.textContext = this._cardName;
+    this._cardImage.src = this._cardLink;
+    this._cardImage.alt = this._cardName;
 
     this._setEventListeners();
 
@@ -32,7 +42,7 @@ export default class Card {
   };
 
   _likeCard = () => {
-    this._card.querySelector('.card__btn_action_like').classList.toggle('card__btn_action_liked');
+    this._likeButton.classList.toggle('card__btn_action_liked');
   };
 
   _deleteCard = () => {
@@ -41,17 +51,23 @@ export default class Card {
 
   /*
   _previewCard = () => { /*дописать
-    imagePreview.src = this._cardLink;
-    imagePreview.alt = this._cardName;
-    titlePreview.textContent = this._cardName;
+
 
     openPopup(previewModal);
   };*/
 
   _setEventListeners = () => {
-    this._card.querySelector('.card__btn_action_like').addEventListener('click', this._likeCard);
-    this._card.querySelector('.card__btn_action_delete').addEventListener('click', this._deleteCard);
-    this._card.querySelector('.card__image').addEventListener('click', this._previewCard);
+    this._likeButton.addEventListener('click', this._likeCard);
+    this._deleteButton.addEventListener('click', this._deleteCard);
+    this._cardImage.addEventListener('click', this._previewCard);
   };
 
 }
+
+/*initialCards.forEach((element) => {
+  const cardItem = new Card(element.name, element.link, '#card-template');
+  const card = cardItem.generateCard();
+  document.querySelector('.cards__list').prepend(card);
+});*/
+
+
