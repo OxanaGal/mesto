@@ -3,7 +3,9 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
 /* Форма профиля */
+
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
+const profileForm = popupEditProfile.querySelector('.form');
 const nameInput = popupEditProfile.querySelector('.form__text-name');
 const jobInput = popupEditProfile.querySelector('.form__text-info');
 
@@ -11,21 +13,25 @@ const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
 /* Форма карточек*/
+
 const cardForm = document.querySelector('.popup_view_card-form');
+const cardEditForm = cardForm.querySelector('.form');
 const titleInput = cardForm.querySelector('.form__card-title');
 const linkInput = cardForm.querySelector('.form__card-link');
 
 /*Просмотр карточек */
+
 const previewModal = document.querySelector('.popup_view_image');
 const imagePreview = previewModal.querySelector('.preview__image');
 const titlePreview = previewModal.querySelector('.preview__description');
 
-
 /* Контент страницы */
+
 const cardContainer = document.querySelector('.cards');
 const cardList = cardContainer.querySelector('.cards__list');
 
 /* Кнопки */
+
 const popupOpenBtn = document.querySelector('.profile__btn_action_edit');
 const popupAddCard = document.querySelector('.profile__btn_action_add');
 const popupSaveBtn = cardForm.querySelector('.popup__btn_action_save');
@@ -34,10 +40,10 @@ const cardFormCloseBtn = cardForm.querySelector('.popup__btn_action_close');
 const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
+
 const disableSaveBtn = () => {
-  /* тут ещё подумаю как поправить...*/
+  popupSaveBtn.disabled = true;
   popupSaveBtn.classList.add('popup__btn_disabled');
-  popupSaveBtn.setAttribute("disabled", "disabled");
 }
 
 const openPopup = (currentModal) => {
@@ -71,6 +77,13 @@ const closeByOverlayClick = (event) => {
   }
 }
 
+export const previewFullImage = (name, link) => {
+  imagePreview.src = link;
+  imagePreview.alt = name;
+  titlePreview.textContent = name;
+  openPopup(previewModal);
+}
+
 /* Редактирование профиля*/
 
 const openEditProfileForm = () => {
@@ -92,29 +105,28 @@ const submitProfileFormHandler = (event) => {
 
 /* Добавление карточек */
 
-function createCard({ name, link }) {
-  const cardItem = new Card({ name, link }, '#card-template');
-  console.dir(cardItem);
-  console.log(cardItem);
-  return cardItem.generateCard();
+function createCard(name, link) {
+  const cardItem = new Card(name, link, '#card-template');
+  const card = cardItem.generateCard();
+  return card;
 };
 
-function renderNewCard(titleValue, linkValue) {
-  const data = { titleValue, linkValue }
-  cardList.prepend(createCard(data));
+function renderNewCard(card) {
+  cardList.prepend(card);
 }
 
 initialCards.forEach((element) => {
-  renderNewCard(element.name, element.link)
+  renderNewCard(createCard(element.name, element.link));
 });
 
 const addNewCard = (event) => {
   event.preventDefault();
 
-
   disableSaveBtn();
 
-  renderNewCard(titleInput.value, linkInput.value);
+  const newCard = createCard(titleInput.value, linkInput.value);
+
+  renderNewCard(newCard);
 
   closePopup(cardForm);
 
@@ -131,12 +143,13 @@ Array.from(document.forms).forEach((formElement) => {
 });
 
 /* Обработка событий */
+
 popupOpenBtn.addEventListener('click', () => {
-  /* formValidators[popupEditProfile.name].cleanForm();*/
+  formValidators[profileForm.name].cleanForm();
   openEditProfileForm();
 });
 popupAddCard.addEventListener('click', () => {
-  /* formValidators[cardForm.name].cleanForm(); */
+  formValidators[cardEditForm.name].cleanForm();
   openPopup(cardForm)
 });
 
@@ -145,4 +158,4 @@ cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
 previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
 
 popupEditProfile.addEventListener('submit', submitProfileFormHandler);
-//cardForm.addEventListener('submit', addNewCard);
+cardForm.addEventListener('submit', addNewCard);
