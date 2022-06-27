@@ -34,10 +34,6 @@ const cardList = cardContainer.querySelector('.cards__list');
 
 const popupOpenBtn = document.querySelector('.profile__btn_action_edit');
 const popupAddCard = document.querySelector('.profile__btn_action_add');
-const popupSaveBtn = cardForm.querySelector('.popup__btn_action_save');
-const profileFormCloseBtn = popupEditProfile.querySelector('.popup__btn_action_close');
-const cardFormCloseBtn = cardForm.querySelector('.popup__btn_action_close');
-const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
 
