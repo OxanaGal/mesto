@@ -50,28 +50,25 @@ export default class FormValidator {
   };
 
   enableValidation = () => {
-    const inputList = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`));
-    const buttonElement = this._form.querySelector(`.${this._submitButtonSelector}`);
+    this.inputList = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`));
+    this.buttonElement = this._form.querySelector(`.${this._submitButtonSelector}`);
 
-    inputList.forEach((inputElement) => {
+    this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this.inputList, this.buttonElement);
       });
     });
 
-    this._toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(this.inputList, this.buttonElement);
   };
 
   cleanForm = () => {
-    const inputList = Array.from(this._form.querySelectorAll(`.${this._inputSelector}`));
-    const buttonElement = this._form.querySelector(`.${this._submitButtonSelector}`);
-
-    inputList.forEach((inputElement) => {
+      this.inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
 
-    this._toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(this.inputList, this.buttonElement);
   };
 
 }

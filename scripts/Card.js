@@ -1,11 +1,11 @@
-import { previewFullImage } from "./index.js";
-
 export default class Card {
-  constructor(name, link, templateSelector) {
+  constructor(name, link, templateSelector, previewCardFunc) {
     this._cardLink = link;
     this._cardName = name;
 
     this._templateSelector = templateSelector;
+
+    this._previewCardFunc = previewCardFunc;
   };
 
 
@@ -45,7 +45,7 @@ export default class Card {
   };
 
   _previewCard = () => {
-    previewFullImage(this._cardName, this._cardLink);
+    this._previewCardFunc(this._cardName, this._cardLink);
   };
 
   _setEventListeners = () => {

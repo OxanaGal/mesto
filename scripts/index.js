@@ -41,15 +41,10 @@ const previewCloseBtn = previewModal.querySelector('.popup__btn_action_close');
 
 /* Открытие и закрытие попапа */
 
-const disableSaveBtn = () => {
-  popupSaveBtn.disabled = true;
-  popupSaveBtn.classList.add('popup__btn_disabled');
-}
-
 const openPopup = (currentModal) => {
   currentModal.classList.add('popup__opened');
 
-  currentModal.addEventListener('click', closeByOverlayClick);
+  currentModal.addEventListener('mousedown', closeByOverlayClick);
 
   document.addEventListener('keydown', closebyEsc);
 }
@@ -58,7 +53,7 @@ const closePopup = (currentModal) => {
 
   currentModal.classList.remove('popup__opened');
 
-  currentModal.removeEventListener('click', closeByOverlayClick);
+  currentModal.removeEventListener('mousedown', closeByOverlayClick);
   document.removeEventListener('keydown', closebyEsc);
 }
 
@@ -72,12 +67,12 @@ const closebyEsc = (event) => {
 };
 
 const closeByOverlayClick = (event) => {
-  if (event.target === event.currentTarget) {
+  if (event.target === event.currentTarget || event.target.classList.contains('popup__btn_action_close')) {
     closePopup(event.currentTarget);
   }
 }
 
-export const previewFullImage = (name, link) => {
+const previewFullImage = (name, link) => {
   imagePreview.src = link;
   imagePreview.alt = name;
   titlePreview.textContent = name;
@@ -90,6 +85,8 @@ const openEditProfileForm = () => {
 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
+
+  formValidators[profileForm.name].cleanForm();
 
   openPopup(popupEditProfile);
 }
@@ -106,7 +103,7 @@ const submitProfileFormHandler = (event) => {
 /* Добавление карточек */
 
 function createCard(name, link) {
-  const cardItem = new Card(name, link, '#card-template');
+  const cardItem = new Card(name, link, '#card-template', previewFullImage);
   const card = cardItem.generateCard();
   return card;
 };
@@ -121,8 +118,6 @@ initialCards.forEach((element) => {
 
 const addNewCard = (event) => {
   event.preventDefault();
-
-  disableSaveBtn();
 
   const newCard = createCard(titleInput.value, linkInput.value);
 
@@ -144,18 +139,11 @@ Array.from(document.forms).forEach((formElement) => {
 
 /* Обработка событий */
 
-popupOpenBtn.addEventListener('click', () => {
-  formValidators[profileForm.name].cleanForm();
-  openEditProfileForm();
-});
+popupOpenBtn.addEventListener('click', openEditProfileForm);
 popupAddCard.addEventListener('click', () => {
   formValidators[cardEditForm.name].cleanForm();
   openPopup(cardForm)
 });
-
-profileFormCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
-cardFormCloseBtn.addEventListener('click', () => closePopup(cardForm));
-previewCloseBtn.addEventListener('click', () => closePopup(previewModal));
 
 popupEditProfile.addEventListener('submit', submitProfileFormHandler);
 cardForm.addEventListener('submit', addNewCard);
