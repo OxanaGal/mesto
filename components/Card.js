@@ -1,11 +1,11 @@
 export default class Card {
-  constructor(name, link, templateSelector, previewCardFunc) {
+  constructor({name, link}, templateSelector, handleCardClick) {
     this._cardLink = link;
     this._cardName = name;
 
     this._templateSelector = templateSelector;
 
-    this._previewCardFunc = previewCardFunc;
+    this._handleCardClick = handleCardClick;
   };
 
 
@@ -45,7 +45,7 @@ export default class Card {
   };
 
   _previewCard = () => {
-    this._previewCardFunc(this._cardName, this._cardLink);
+    this._handleCardClick(this._cardName, this._cardLink);
   };
 
   _setEventListeners = () => {

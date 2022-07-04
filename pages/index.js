@@ -1,6 +1,21 @@
-import { initialCards, validationConfig } from '../utils/constants.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import { initialCards,
+  validationConfig,
+  cardTemplateSelector,
+  cardsListSelector,
+  profileFormSelector,
+  cardFormSelector,
+  profileFormNameSelector,
+  profileFormInfoSelector,
+  cardFormNameSelector,
+  cardFormLinkSelector,
+} from '../utils/constants.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Popup from '../components/Popup.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
 
 /* Форма профиля */
 
@@ -43,7 +58,7 @@ const openPopup = (currentModal) => {
   currentModal.addEventListener('mousedown', closeByOverlayClick);
 
   document.addEventListener('keydown', closebyEsc);
-}
+};
 
 const closePopup = (currentModal) => {
 
@@ -51,7 +66,7 @@ const closePopup = (currentModal) => {
 
   currentModal.removeEventListener('mousedown', closeByOverlayClick);
   document.removeEventListener('keydown', closebyEsc);
-}
+};
 
 const closebyEsc = (event) => {
   if (event.key === 'Escape') {
@@ -66,63 +81,111 @@ const closeByOverlayClick = (event) => {
   if (event.target === event.currentTarget || event.target.classList.contains('popup__btn_action_close')) {
     closePopup(event.currentTarget);
   }
-}
+};
 
 const previewFullImage = (name, link) => {
   imagePreview.src = link;
   imagePreview.alt = name;
   titlePreview.textContent = name;
   openPopup(previewModal);
-}
+};
+
+/*new*/
+
 
 /* Редактирование профиля*/
 
+const userProfile = new UserInfo(profileFormNameSelector, profileFormInfoSelector);
+
+const handleProfileSubmit = (data) =>{
+  userProfile.setUserInfo(data);
+};
+
+const profilePopup = new PopupWithForm(profileFormSelector, handleProfileSubmit);
+profilePopup.setEventListeners();
+
+const handleProfilePopupOpen = () =>{
+  profilePopup.getUserInfo();
+  profilePopup.open();
+}
+
+/*****/
+
 const openEditProfileForm = () => {
 
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileDescription.textContent;
+  //nameInput.value = profileTitle.textContent;
+  // jobInput.value = profileDescription.textContent;
+  const userData = userProfile.getUserInfo();
+
+  nameInput.value = userData.name;
+  jobInput.value = userData.info;
 
   formValidators[profileForm.name].cleanForm();
 
   openPopup(popupEditProfile);
-}
+};
 
 const submitProfileFormHandler = (event) => {
   event.preventDefault();
 
-  profileTitle.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
+  // profileTitle.textContent = nameInput.value;
+  // profileDescription.textContent = jobInput.value;
+  userProfile.setUserInfo();
 
   closePopup(popupEditProfile);
-}
+};
 
 /* Добавление карточек */
 
-function createCard(name, link) {
-  const cardItem = new Card(name, link, '#card-template', previewFullImage);
-  const card = cardItem.generateCard();
-  return card;
+function createCard(item) {
+  const cardItem = new Card(item, cardTemplateSelector, previewFullImage);
+  return cardItem.generateCard();
 };
+
+/* new */
+
+const cardsContainer = new Section({
+  items: initialCards.reverse(),
+  renderer: createCard,
+}, cardsListSelector);
+
+
+const handleCardSubmit = (item) => {
+
+  cardsContainer.addItem(item);
+};
+
+const newCardPopup = new PopupWithForm(cardFormSelector, handleCardSubmit);
+newCardPopup.setEventListeners();
+
+const addCardHandelSubmit = () =>{
+
+  newCardPopup.open();
+}
+
+
+/****/
 
 function renderNewCard(card) {
   cardList.prepend(card);
-}
+};
+
 
 initialCards.forEach((element) => {
-  renderNewCard(createCard(element.name, element.link));
+  renderNewCard(createCard(element));
 });
 
-const addNewCard = (event) => {
+/*const addNewCard = (event) => {
   event.preventDefault();
 
-  const newCard = createCard(titleInput.value, linkInput.value);
+  const newCard = createCard({ name: titleInput.value, link: linkInput.value });
 
   renderNewCard(newCard);
 
   closePopup(cardForm);
 
   event.target.reset();
-}
+};*/
 
 /* Валидация */
 
@@ -135,11 +198,16 @@ Array.from(document.forms).forEach((formElement) => {
 
 /* Обработка событий */
 
-popupOpenBtn.addEventListener('click', openEditProfileForm);
-popupAddCard.addEventListener('click', () => {
+popupOpenBtn.addEventListener('click', handleProfilePopupOpen);
+popupAddCard.addEventListener('click', addCardHandelSubmit);
+
+
+//popupOpenBtn.addEventListener('click', openEditProfileForm);
+/*popupAddCard.addEventListener('click', () => {
   formValidators[cardEditForm.name].cleanForm();
   openPopup(cardForm)
-});
+});*/
 
 popupEditProfile.addEventListener('submit', submitProfileFormHandler);
-cardForm.addEventListener('submit', addNewCard);
+//cardForm.addEventListener('submit', addNewCard);
+cardForm.addEventListener('submit', handleCardSubmit);
