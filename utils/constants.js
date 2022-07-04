@@ -39,6 +39,8 @@ export const validationConfig = {
 
 /* Селекторы профиля */
 
+export const profileTitleSelector = '.profile__title';
+export const profileDescriptionSelector = '.profile__description';
 
 /* Селекторы карточек */
 export const cardTemplateSelector = '#card-template';
@@ -60,6 +62,7 @@ export const profileFormNameSelector = '.form__text-name';
 export const profileFormInfoSelector = '.form__text-info';
 export const cardFormNameSelector = '.form__card-title';
 export const cardFormLinkSelector = '.form__card-link';
+
 
 /* Поля форм */
 

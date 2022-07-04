@@ -16,6 +16,8 @@ import {
   cardAddForm,
   nameInput,
   jobInput,
+  profileTitleSelector,
+  profileDescriptionSelector
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -27,11 +29,12 @@ import Section from '../components/Section.js';
 
 /* Редактирование профиля */
 
-const userProfile = new UserInfo({nameSelector: profileFormNameSelector, infoSelector: profileFormInfoSelector});
+const userProfile = new UserInfo({nameSelector: profileTitleSelector, infoSelector: profileDescriptionSelector});
 
 /* Попап формы редактирования профиля */
 
 const handleProfileSubmit = (data) =>{
+  console.log(data)
   userProfile.setUserInfo(data);
 };
 
