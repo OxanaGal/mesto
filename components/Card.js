@@ -45,6 +45,7 @@ export default class Card {
   };
 
   _previewCard = () => {
+
     this._handleCardClick(this._cardName, this._cardLink);
   };
 

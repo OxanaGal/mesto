@@ -49,9 +49,24 @@ export const profileFormSelector = '.popup_view_profile-form';
 export const cardFormSelector = '.popup_view_card-form';
 export const previewModal = '.popup_view_image';
 
+/* Формы */
+
+export const profileEditForm = document.querySelector(profileFormSelector);
+export const cardAddForm = document.querySelector(cardFormSelector);
+
 /* Селекторы полей */
 
 export const profileFormNameSelector = '.form__text-name';
 export const profileFormInfoSelector = '.form__text-info';
 export const cardFormNameSelector = '.form__card-title';
 export const cardFormLinkSelector = '.form__card-link';
+
+/* Поля форм */
+
+export const nameInput = profileEditForm.querySelector(profileFormNameSelector);
+export const jobInput = profileEditForm.querySelector(profileFormInfoSelector);
+
+/* Кнопки */
+
+export const profileOpenBtn = document.querySelector('.profile__btn_action_edit');
+export const cardAddBtn = document.querySelector('.profile__btn_action_add');

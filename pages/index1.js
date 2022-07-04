@@ -10,6 +10,12 @@ import {
   profileFormInfoSelector,
   cardFormNameSelector,
   cardFormLinkSelector,
+  profileOpenBtn,
+  cardAddBtn,
+  profileEditForm,
+  cardAddForm,
+  nameInput,
+  jobInput,
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -21,7 +27,7 @@ import Section from '../components/Section.js';
 
 /* Редактирование профиля */
 
-const userProfile = new UserInfo(profileFormNameSelector, profileFormInfoSelector);
+const userProfile = new UserInfo({nameSelector: profileFormNameSelector, infoSelector: profileFormInfoSelector});
 
 /* Попап формы редактирования профиля */
 
@@ -33,7 +39,10 @@ const profilePopup = new PopupWithForm(profileFormSelector, handleProfileSubmit)
 profilePopup.setEventListeners();
 
 const handleProfilePopupOpen = () =>{
-  profilePopup.getUserInfo();
+  const userData = userProfile.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.info;
+
   profilePopup.open();
 };
 
@@ -62,10 +71,11 @@ function createCard(item) {
 // Отрисовываем начальный блок карточек из массива
 
 const cardsContainer = new Section({
-  items: initialCards.reverse(),
+  items: initialCards,
   renderer: (item) => {
-    createCard(item)
-  },
+    const cardElement = createCard(item);
+    cardsContainer.addItem(cardElement);
+  }
 }, cardsListSelector);
 
 cardsContainer.render();
@@ -96,3 +106,8 @@ Array.from(document.forms).forEach((formElement) => {
 });
 
 /* Обработка событий */
+profileOpenBtn.addEventListener('click', handleProfilePopupOpen);
+cardAddBtn.addEventListener('click', handleAddCardOpen);
+
+profileEditForm.addEventListener('submit', handleProfileSubmit);
+cardAddForm.addEventListener('submit', handleCardSubmit);

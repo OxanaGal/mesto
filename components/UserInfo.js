@@ -1,17 +1,17 @@
 export default class UserInfo {
-  constructor(nameSelector, infoSelector) {
+  constructor({nameSelector, infoSelector}) {
     this._nameField = document.querySelector(nameSelector);
     this._infoField = document.querySelector(infoSelector);
   }
 
   getUserInfo() {
 
-    const data = {};
+    this._data = {};
 
     this._data.name = this._nameField.textContent;
     this._data.info = this._infoField.textContent;
-
-    return data;
+    console.log(this._data)
+    return this._data ;
   }
 
   setUserInfo(data) {
