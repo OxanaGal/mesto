@@ -26,6 +26,7 @@ import Section from '../components/Section.js';
 
 const userProfile = new UserInfo({nameSelector: profileTitleSelector, infoSelector: profileDescriptionSelector});
 console.log(`'объект для профиля ${userProfile}'`)
+console.dir(userProfile)
 /* Попап формы редактирования профиля */
 
 const handleProfilePopupOpen = () =>{
@@ -45,6 +46,7 @@ const handleProfileSubmit = (userData) =>{
 };
 
 const profilePopup = new PopupWithForm(profileFormSelector, (inputValues) =>{
+  console.log('tigranTest', inputValues);
   handleProfileSubmit(inputValues);
   profilePopup.close();
 } );
@@ -89,7 +91,7 @@ cardsContainer.render();
 /* Попап формы добавления карточки */
 
 const handleCardSubmit = (item) => {
-  console.log(`'объект для карточки ${item}'`)
+  console.log(`'объект для карточки в сабмите ${item}'`)
   cardsContainer.addItem(item);
 };
 
@@ -119,15 +121,10 @@ Array.from(document.forms).forEach((formElement) => {
 
 /* Обработка событий */
 
-profileOpenBtn.addEventListener('click', () =>{
-  console.log(profileEditForm)
+profileOpenBtn.addEventListener('click', handleProfilePopupOpen);
 
-  handleProfilePopupOpen();
-});
-cardAddBtn.addEventListener('click', () =>{
+cardAddBtn.addEventListener('click', handleAddCardOpen);
 
-  handleAddCardOpen();
-});
 
 profileEditForm.addEventListener('submit', handleProfileSubmit);
 cardAddForm.addEventListener('submit', handleCardSubmit);
