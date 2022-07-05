@@ -51,10 +51,15 @@ export const profileFormSelector = '.popup_view_profile-form';
 export const cardFormSelector = '.popup_view_card-form';
 export const previewModal = '.popup_view_image';
 
+/* Попапы */
+
+const popupEditProfile = document.querySelector('.popup_view_profile-form');
+const cardEditForm = document.querySelector('.popup_view_card-form');
+
 /* Формы */
 
-export const profileEditForm = document.querySelector(profileFormSelector);
-export const cardAddForm = document.querySelector(cardFormSelector);
+export const profileEditForm = popupEditProfile.querySelector('.form');
+export const cardAddForm = cardEditForm.querySelector('.form');
 
 /* Селекторы полей */
 
@@ -66,8 +71,8 @@ export const cardFormLinkSelector = '.form__card-link';
 
 /* Поля форм */
 
-export const nameInput = profileEditForm.querySelector(profileFormNameSelector);
-export const jobInput = profileEditForm.querySelector(profileFormInfoSelector);
+export const nameInput = profileEditForm.querySelector('.form__text-name');
+export const jobInput = profileEditForm.querySelector('.form__text-info');
 
 /* Кнопки */
 

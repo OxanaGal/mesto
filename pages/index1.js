@@ -6,10 +6,6 @@ import {
   profileFormSelector,
   cardFormSelector,
   previewModal,
-  profileFormNameSelector,
-  profileFormInfoSelector,
-  cardFormNameSelector,
-  cardFormLinkSelector,
   profileOpenBtn,
   cardAddBtn,
   profileEditForm,
@@ -17,11 +13,10 @@ import {
   nameInput,
   jobInput,
   profileTitleSelector,
-  profileDescriptionSelector
+  profileDescriptionSelector,
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
-import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
@@ -30,24 +25,32 @@ import Section from '../components/Section.js';
 /* Редактирование профиля */
 
 const userProfile = new UserInfo({nameSelector: profileTitleSelector, infoSelector: profileDescriptionSelector});
-
+console.log(`'объект для профиля ${userProfile}'`)
 /* Попап формы редактирования профиля */
 
-const handleProfileSubmit = (data) =>{
-  console.log(data)
-  userProfile.setUserInfo(data);
-};
-
-const profilePopup = new PopupWithForm(profileFormSelector, handleProfileSubmit);
-profilePopup.setEventListeners();
-
 const handleProfilePopupOpen = () =>{
+
+  profileFormValidation.cleanForm();
+
   const userData = userProfile.getUserInfo();
   nameInput.value = userData.name;
   jobInput.value = userData.info;
 
+
   profilePopup.open();
 };
+
+const handleProfileSubmit = (userData) =>{
+  userProfile.setUserInfo(userData);
+};
+
+const profilePopup = new PopupWithForm(profileFormSelector, (inputValues) =>{
+  handleProfileSubmit(inputValues);
+  profilePopup.close();
+} );
+profilePopup.setEventListeners();
+
+
 
 /* Попап окна просмотра карточки */
 
@@ -86,7 +89,7 @@ cardsContainer.render();
 /* Попап формы добавления карточки */
 
 const handleCardSubmit = (item) => {
-
+  console.log(`'объект для карточки ${item}'`)
   cardsContainer.addItem(item);
 };
 
@@ -95,22 +98,36 @@ newCardPopup.setEventListeners();
 
 
 const handleAddCardOpen = () =>{
-
+  cardFormValidation.cleanForm();
   newCardPopup.open();
 }
 
 /* Валидация форм */
 
-const formValidators = {}
+const profileFormValidation = new FormValidator(validationConfig, profileEditForm);
+profileFormValidation.enableValidation();
+
+const cardFormValidation = new FormValidator(validationConfig, cardAddForm);
+cardFormValidation.enableValidation();
+
+/*const formValidators = {}
 
 Array.from(document.forms).forEach((formElement) => {
   formValidators[formElement.name] = new FormValidator(validationConfig, formElement);
   formValidators[formElement.name].enableValidation();
-});
+});*/
 
 /* Обработка событий */
-profileOpenBtn.addEventListener('click', handleProfilePopupOpen);
-cardAddBtn.addEventListener('click', handleAddCardOpen);
+
+profileOpenBtn.addEventListener('click', () =>{
+  console.log(profileEditForm)
+
+  handleProfilePopupOpen();
+});
+cardAddBtn.addEventListener('click', () =>{
+
+  handleAddCardOpen();
+});
 
 profileEditForm.addEventListener('submit', handleProfileSubmit);
 cardAddForm.addEventListener('submit', handleCardSubmit);

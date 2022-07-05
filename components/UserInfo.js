@@ -6,12 +6,12 @@ export default class UserInfo {
 
   getUserInfo() {
 
-    this._data = {};
+    const data = {};
 
-    this._data.name = this._nameField.textContent;
-    this._data.info = this._infoField.textContent;
-    console.log(this._data)
-    return this._data ;
+    data.name = this._nameField.textContent;
+    data.info = this._infoField.textContent;
+
+    return data ;
   }
 
   setUserInfo(data) {
