@@ -6,7 +6,8 @@ export default class Section {
   };
 
   addItem(item) {
-
+    console.log('пришел объект для карточки ', item)
+    console.log('контейнер', this._container)
     this._container.prepend(item);
   };
 

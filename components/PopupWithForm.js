@@ -14,13 +14,12 @@ export default class PopupWithForm extends Popup {
     this._inputValues = {};
 
     this._inputList = Array.from(this._form.querySelectorAll('.form__item'));
-    console.log(this._inputList)
+
     this._inputList.forEach((input) => {
       this._inputValues[input.name] = input.value;
-      console.log(input.name)
-    });
 
-    console.log(this._inputValues)
+    });
+    console.log('значения инпутов', this._inputValues)
     return this._inputValues;
   };
 
@@ -30,8 +29,7 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
-      console.log(`'инпуты в классе, метод set ${this._getInputValues()}'`)
-      console.dir(this._getInputValues())
+      console.log('значения инпутов в сете', this._getInputValues())
       this._submitFunc(this._getInputValues());
     });
 
