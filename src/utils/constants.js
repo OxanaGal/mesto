@@ -1,3 +1,13 @@
+import Api from '../components/Api';
+
+export const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
+  headers: {
+    authorization: 'f4adbd05-b875-4ca6-87f0-5ee77caa205a',
+    'Content-Type': 'application/json'
+  }
+});
+
 /* Стартовый набор карточек */
 
 export const initialCards = [
@@ -37,6 +47,19 @@ export const validationConfig = {
   errorClass: 'form__input-error_active'
 };
 
+export const profileBtnCap = {
+  normalCaption: 'Сохранить',
+  activeCaption: 'Сохранение...'
+}
+export const cardAddBtnCap = {
+  normalCaption: 'Создать',
+  activeCaption: 'Создаю...'
+}
+export const cardDelBtnCap = {
+  normalCaption: 'Да',
+  activeCaption: 'Удаляю...'
+}
+
 /* Селекторы профиля */
 
 export const profileTitleSelector = '.profile__title';
@@ -50,16 +73,19 @@ export const cardsListSelector = '.cards__list';
 export const profileFormSelector = '.popup_view_profile-form';
 export const cardFormSelector = '.popup_view_card-form';
 export const previewModal = '.popup_view_image';
+export const avatarFormSelector = '.popup_view_avatar-form';
 
 /* Попапы */
 
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const cardEditForm = document.querySelector('.popup_view_card-form');
+const avatarEditForm = document.querySelector('.popup_view_avatar-form');
 
 /* Формы */
 
 export const profileEditForm = popupEditProfile.querySelector('.form');
 export const cardAddForm = cardEditForm.querySelector('.form');
+export const avatarUpdateForm = avatarEditForm.querySelector('.form');
 
 /* Селекторы полей */
 
@@ -78,3 +104,4 @@ export const jobInput = profileEditForm.querySelector('.form__text-info');
 
 export const profileOpenBtn = document.querySelector('.profile__btn_action_edit');
 export const cardAddBtn = document.querySelector('.profile__btn_action_add');
+export const avatarUpdateBtn = document.querySelector('.profile__avatar');

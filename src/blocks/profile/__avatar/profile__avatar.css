@@ -5,6 +5,14 @@
   flex-shrink: 0;
 
   border-radius: 60px;
+
+  background-color: black;
+  background-image: url(../../../images/logo/pen.png);
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  border-radius: 60px;
+  transition: opacity 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 630px){

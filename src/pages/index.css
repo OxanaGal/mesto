@@ -56,10 +56,12 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__description/card__description.css);
 @import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__like-section/card__like-section.css);
 @import url(../blocks/card/__btn/card__btn.css);
 @import url(../blocks/card/__btn/_action/card__btn_action_like.css);
 @import url(../blocks/card/__btn/_action/card__btn_action_delete.css);
 @import url(../blocks/card/__btn/_action/card__btn_action_liked.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
 
 
 @import url(../blocks/footer/footer.css);
