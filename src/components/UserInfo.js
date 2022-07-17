@@ -28,13 +28,13 @@ export default class UserInfo {
     this._id = _id;
   }
 
-  getUserAvatar(){
+ /* getUserAvatar() {
     return {
       avatar: this._avatar
     }
-  }
+  }*/
 
-  getUserId(){
+  getUserId = () => {
     return this._id;
   }
 

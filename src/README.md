@@ -32,7 +32,7 @@
 
 **Github Pages**
 
-* [Ссылка на github pages](https://oxanagal.github.io/mesto/index.html)
+* [Ссылка на github pages](https://oxanagal.github.io/mesto/)
 
 
 

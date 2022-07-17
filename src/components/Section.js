@@ -4,9 +4,13 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   };
 
-  addItem(item) {
+  addItem(item, order = 'prepend') {
+    if(order === 'append'){
+      this._container.append(item);
+    } else{
+      this._container.prepend(item);
+    }
 
-    this._container.prepend(item);
   };
 
   renderItems(items) {

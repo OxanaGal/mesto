@@ -31,9 +31,9 @@ export default class Popup {
     }
   };
 
-  setEventListeners() {
+  //setEventListeners() {
 
   //  this._popupCloseBtn.addEventListener('click', this.close);
-  };
+  //};
 
 }

@@ -74,12 +74,14 @@ export const profileFormSelector = '.popup_view_profile-form';
 export const cardFormSelector = '.popup_view_card-form';
 export const previewModal = '.popup_view_image';
 export const avatarFormSelector = '.popup_view_avatar-form';
+export const cardDelConfirmSelector = '.popup_view_delete-comfirmation';
 
 /* Попапы */
 
 const popupEditProfile = document.querySelector('.popup_view_profile-form');
 const cardEditForm = document.querySelector('.popup_view_card-form');
 const avatarEditForm = document.querySelector('.popup_view_avatar-form');
+
 
 /* Формы */
 
@@ -105,3 +107,4 @@ export const jobInput = profileEditForm.querySelector('.form__text-info');
 export const profileOpenBtn = document.querySelector('.profile__btn_action_edit');
 export const cardAddBtn = document.querySelector('.profile__btn_action_add');
 export const avatarUpdateBtn = document.querySelector('.profile__avatar');
+export const trashBtn = document.querySelector('.card__btn_action_delete')
