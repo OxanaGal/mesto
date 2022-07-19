@@ -11,12 +11,11 @@
   background-position: center;
   background-size: 25px;
   background-repeat: no-repeat;
-  border-radius: 60px;
   transition: opacity 0.3s ease-in-out;
 }
 
 .profile__avatar:hover{
-  background-image: url(../../../images/logo/pen.png);;
+  background-image: url(../../../images/logo/pen.png);
 }
 
 @media screen and (max-width: 630px){
