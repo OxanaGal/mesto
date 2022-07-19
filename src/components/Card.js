@@ -55,7 +55,7 @@ export default class Card {
     } else {
       this._likeButton.classList.remove('card__btn_action_liked');
     }
-    //
+    // ноль лайков не отрисовываем
     if (this._likes.length === 0) {
       this._likeCounter.textContent = '';
     } else {
@@ -85,7 +85,6 @@ export default class Card {
   }
 
   _previewCard = () => {
-
     this._cardClickFunc(this._cardName, this._cardLink);
   };
 
@@ -93,10 +92,7 @@ export default class Card {
     this._likeButton.addEventListener('click', this._likeCard);
 
     if (this._isOwner) {
-      //  this._deleteButton.addEventListener('click', this._deleteCard);
-      console.log(this._id);
-
-      this._deleteButton.addEventListener('click', this._handleDeleteClick);
+      this._deleteButton.addEventListener('click', this._handleDeleteCard);
     } else {
       this._deleteButton.remove();
     }

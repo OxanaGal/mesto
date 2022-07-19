@@ -8,35 +8,6 @@ export const api = new Api({
   }
 });
 
-/* Стартовый набор карточек */
-
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 /* Конфиг валидации */
 
 export const validationConfig = {
@@ -47,17 +18,19 @@ export const validationConfig = {
   errorClass: 'form__input-error_active'
 };
 
+/* Текст кнопок */
+
 export const profileBtnCap = {
-  normalCaption: 'Сохранить',
-  activeCaption: 'Сохранение...'
+  defaultTextDisplay: 'Сохранить',
+  progressTextDisplay: 'Сохранение...'
 }
 export const cardAddBtnCap = {
-  normalCaption: 'Создать',
-  activeCaption: 'Создаю...'
+  defaultTextDisplay: 'Создать',
+  progressTextDisplay: 'Создаю...'
 }
 export const cardDelBtnCap = {
-  normalCaption: 'Да',
-  activeCaption: 'Удаляю...'
+  defaultTextDisplay: 'Да',
+  progressTextDisplay: 'Удаляю...'
 }
 
 /* Селекторы профиля */

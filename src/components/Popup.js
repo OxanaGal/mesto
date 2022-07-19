@@ -32,7 +32,7 @@ export default class Popup {
   };
 
   //setEventListeners() {
-
+  // был по ТЗ, но не нужен
   //  this._popupCloseBtn.addEventListener('click', this.close);
   //};
 

@@ -112,10 +112,11 @@
   </div>
   <div class="popup popup_view_delete-comfirmation">
     <div class="popup__container">
-      <form class="form" name="delete-comfirmation-form" method="post" action="#" novalidate>
+      <form class="form" name="delete-comfirmation-form" method="get" action="#" novalidate>
+        <!--не уверена по методу для формы-->
         <h2 class="form__heading">Вы уверены?</h2>
         <div class="form__handlers">
-          <button class="popup__btn popup__btn_action_save popup__btn_action_submit" type="button">Да</button>
+          <button class="popup__btn popup__btn_action_save" type="submit">Да</button>
           <button class="popup__btn popup__btn_action_close shaded" type="button"></button>
         </div>
       </form>
