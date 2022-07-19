@@ -28,12 +28,6 @@ export default class UserInfo {
     this._id = _id;
   }
 
- /* getUserAvatar() {
-    return {
-      avatar: this._avatar
-    }
-  }*/
-
   getUserId = () => {
     return this._id;
   }

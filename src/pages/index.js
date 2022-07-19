@@ -167,8 +167,7 @@ const handleLikeCard = (cardId, isLiked, likeCardCallback) => {
 // Создание элемента карточки
 
 function createCard(item) {
-
-  const cardItem = new Card(item, userProfile.getUserId(), cardTemplateSelector, {
+   const cardItem = new Card(item, userProfile.getUserId(), cardTemplateSelector, {
     clickCardCallback: handleCardClick,
     deleteCardCallback: handleConfirmationDel,
     likeCardCallback: handleLikeCard
@@ -205,12 +204,10 @@ const handleCardSubmit = (item) => {
     .finally(() => {
       newCardPopup.toggleBtnText(false);
     })
-  cardsContainer.addItem(createCard(item));
 
 };
 
 const newCardPopup = new PopupWithForm(cardFormSelector, (item) => {
-  console.log(item)
   handleCardSubmit(item);
 }, cardAddBtnCap);
 
@@ -240,7 +237,6 @@ profileOpenBtn.addEventListener('click', handleProfilePopupOpen);
 cardAddBtn.addEventListener('click', handleAddCardOpen);
 
 avatarUpdateBtn.addEventListener('click', handleAvatarPopupOpen)
-
 
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])

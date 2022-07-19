@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ name, link, _id, likes, owner: { _id: ownerId } }, userId, templateSelector, { clickCardCallback, deleteCardCallback, likeCardCallback }) {
+  constructor({ name, link, _id, likes, owner: { _id: ownerId } }, userId, templateSelector, { clickCardCallback, deleteCardCallback, likeCardCallback }){
     this._cardLink = link;
     this._cardName = name;
     this._id = _id;
